@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------------
-# Copyright (c) 2023 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2024 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -276,13 +276,25 @@ set_property -dict {PACKAGE_PIN F15   IOSTANDARD LVCMOS18  } [get_ports {FMC_GCL
 set_property -dict {PACKAGE_PIN C7    IOSTANDARD LVCMOS18  } [get_ports {I2C_SCL}]
 set_property -dict {PACKAGE_PIN D2    IOSTANDARD LVCMOS18  } [get_ports {I2C_SDA}]
 
+# IOE User LEDs
+if {$PL_MGT == "B224"} {
+  # set_property PACKAGE_PIN Y6    [get_ports {IOE_D0_LED0_N}] # GTH
+  # set_property PACKAGE_PIN Y5    [get_ports {IOE_D1_LED1_N}] # GTH
+}
+
 # LED
 set_property -dict {PACKAGE_PIN H2    IOSTANDARD LVCMOS18  } [get_ports {LED2_PL_N}]
 set_property -dict {PACKAGE_PIN E7    IOSTANDARD LVCMOS18  } [get_ports {LED3_PL_N}]
 
+# PE1 SI5338 CLK1
+if {$PL_MGT == "B224"} {
+  # set_property PACKAGE_PIN V5    [get_ports {MGT_REFCLK1_N}] # GTH
+  # set_property PACKAGE_PIN V6    [get_ports {MGT_REFCLK1_P}] # GTH
+}
+
 # PE1 SI5338 CLK3
-set_property -dict {PACKAGE_PIN AF12  IOSTANDARD LVCMOS18  } [get_ports {OSC_N}]
-set_property -dict {PACKAGE_PIN AE12  IOSTANDARD LVCMOS18  } [get_ports {OSC_P}]
+set_property -dict {PACKAGE_PIN AF12  IOSTANDARD DIFF_SSTL18_I} [get_ports {OSC_N}]
+set_property -dict {PACKAGE_PIN AE12  IOSTANDARD DIFF_SSTL18_I} [get_ports {OSC_P}]
 
 # IRPS5401 0 power sync
 set_property -dict {PACKAGE_PIN P9    IOSTANDARD LVCMOS18  } [get_ports {PWR_SYNC_BC0}]

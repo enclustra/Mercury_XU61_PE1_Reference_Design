@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------------
-# Copyright (c) 2023 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2024 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -21,20 +21,15 @@
 
 # Project settings for Mercury XU61 Reference Design
 # Valid module codes
-# ME-XU61-2CG-1E-D9-NU
-# ME-XU61-2CG-1I-D9-NU
 # ME-XU61-2CG-L1I4524-D9-NU
-# ME-XU61-2EG-1I-D9-NU
-# ME-XU61-2EG-L1I4524-D9-NU
 # ME-XU61-2EG-L1I4524-D11
-# ME-XU61-2EG-L1I4524-D11-NU
 # ME-XU61-4CG-1E4524-D11
-# ME-XU61-5CG-1E-D11
 
 # ----------------------------------------------------------------------------------------------------
 # Modify this variable to select your module
-if {![info exists module_name]} {set module_name ME-XU61-2CG-1E-D9-NU}
+if {![info exists module_name]} {set module_name ME-XU61-2CG-L1I4524-D9-NU}
 if {![info exists baseboard]}   {set baseboard PE1}
+if {![info exists vivado_dir]}   {set vivado_dir [file join Vivado ${module_name}] }
 # ----------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------
@@ -48,50 +43,23 @@ set module Mercury_XU61
 set family zynqmp
 
 switch $module_name {
-  ME-XU61-2CG-1E-D9-NU {
-    set part xczu2cg-sfvc784-1-e 
-    set PS_LPDDR PS_D9
-    set USB No_USB
-  }
-  ME-XU61-2CG-1I-D9-NU {
-    set part xczu2cg-sfvc784-1-i 
-    set PS_LPDDR PS_D9
-    set USB No_USB
-  }
   ME-XU61-2CG-L1I4524-D9-NU {
     set part xczu2cg-sfvc784-1L-i 
     set PS_LPDDR PS_D9
     set USB No_USB
-  }
-  ME-XU61-2EG-1I-D9-NU {
-    set part xczu2eg-sfvc784-1-i 
-    set PS_LPDDR PS_D9
-    set USB No_USB
-  }
-  ME-XU61-2EG-L1I4524-D9-NU {
-    set part xczu2eg-sfvc784-1L-i 
-    set PS_LPDDR PS_D9
-    set USB No_USB
+    set PL_MGT No_PL_MGT
   }
   ME-XU61-2EG-L1I4524-D11 {
     set part xczu2eg-sfvc784-1L-i 
     set PS_LPDDR PS_D11
     set USB USB
-  }
-  ME-XU61-2EG-L1I4524-D11-NU {
-    set part xczu2eg-sfvc784-1L-i 
-    set PS_LPDDR PS_D11
-    set USB No_USB
+    set PL_MGT No_PL_MGT
   }
   ME-XU61-4CG-1E4524-D11 {
     set part xczu4cg-sfvc784-1-e 
     set PS_LPDDR PS_D11
     set USB USB
-  }
-  ME-XU61-5CG-1E-D11 {
-    set part xczu5cg-sfvc784-1-e 
-    set PS_LPDDR PS_D11
-    set USB USB
+    set PL_MGT B224
   }
   default {
     puts "$module_name not available"

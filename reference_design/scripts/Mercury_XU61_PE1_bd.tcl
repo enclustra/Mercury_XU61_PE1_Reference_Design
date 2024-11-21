@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------------
-# Copyright (c) 2023 by Enclustra GmbH, Switzerland.
+# Copyright (c) 2024 by Enclustra GmbH, Switzerland.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this hardware, software, firmware, and associated documentation files (the
@@ -115,6 +115,7 @@ set_property -dict [ list \
   CONFIG.PSU_MIO_21_PULLUPDOWN {disable} \
   CONFIG.PSU__SD0__PERIPHERAL__IO {MIO 13 .. 22} \
   CONFIG.PSU__SD0__DATA_TRANSFER_MODE {8Bit} \
+  CONFIG.PSU__USE__IRQ0  {1} \
 ] [get_bd_cells zynq_ultra_ps_e]
 set_property -dict [ list \
   CONFIG.PSU__I2C0__PERIPHERAL__ENABLE {1} \
@@ -132,6 +133,7 @@ connect_bd_net [get_bd_pins zynq_ultra_ps_e/maxihpm0_lpd_aclk] [get_bd_pins zynq
 create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 ps_sys_rst
 connect_bd_net [get_bd_pins ps_sys_rst/slowest_sync_clk] [get_bd_pins zynq_ultra_ps_e/pl_clk0]
 connect_bd_net [get_bd_pins ps_sys_rst/ext_reset_in] [get_bd_pins zynq_ultra_ps_e/pl_resetn0]
+connect_bd_net [get_bd_pins system_management_wiz/ip2intc_irpt] [get_bd_pins zynq_ultra_ps_e/pl_ps_irq0]
 set IIC [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 IIC ]
 connect_bd_intf_net [get_bd_intf_ports IIC] [get_bd_intf_pins zynq_ultra_ps_e/IIC_0]
 
