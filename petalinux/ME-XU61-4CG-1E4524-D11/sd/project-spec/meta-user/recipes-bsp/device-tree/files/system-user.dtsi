@@ -1,7 +1,3 @@
 /include/ "system-conf.dtsi"
 / {
-	model = "Enclustra ME-XU61-4CG-1E4524-D11 SOM";
 };
-#include "zynqmp_enclustra_common.dtsi"
-#include "zynqmp_enclustra_mercury_xu61.dtsi"
-#include "zynqmp_enclustra_mercury_pe1.dtsi"
