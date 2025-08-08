@@ -10,8 +10,8 @@ Enclustra GmbH [support@enclustra.com]
 
 ## Documentation
 
-* [Mercury XU61 PE1 Reference Design documentation](./reference_design/doc/Mercury_XU61_PE1.pdf)
-* [Petalinux documentation](https://github.com/enclustra/PetalinuxDocumentation)
+* [Mercury XU61 PE1 Reference Design documentation](./doc/Mercury_XU61_PE1.pdf)
+* [Linux documentation](https://github.com/enclustra/meta-enclustra-amd)
 * Enclustra Application Notes
   - [I2C AppNote](https://github.com/enclustra/I2CAppNote)
   - [Gigabit Ethernet AppNote](https://github.com/enclustra/GigabitEthernetAppNote)
